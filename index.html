@@ -3,159 +3,293 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NM Data Solutions | B2B Lead Generation</title>
+    <title>NM Data Solutions | Intelligent B2B Lead Gen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg-color: #0a0a0a;
-            --text-color: #e0e0e0;
-            --accent-color: #d90429; /* Un rojo River Plate sutil */
-            --secondary-color: #1a1a1a;
+            --bg-color: #050505;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-main: #ffffff;
+            --text-muted: #a1a1aa;
+            --accent: #e31c3e; /* Rojo River moderno */
+            --accent-glow: rgba(227, 28, 62, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: 'Courier New', Courier, monospace; /* Toque Tech/Ingeniero */
+            font-family: 'Outfit', sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
+            color: var(--text-main);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
+        /* Fondo con grilla sutil tech */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--card-bg) 1px, transparent 1px),
+                linear-gradient(90deg, var(--card-bg) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER */
         header {
-            padding: 20px 10%;
+            padding: 20px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #333;
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .logo {
-            font-weight: bold;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
             font-size: 1.5rem;
-            letter-spacing: 2px;
+            letter-spacing: -1px;
         }
 
-        .logo span { color: var(--accent-color); }
+        .logo span { color: var(--accent); }
 
+        .cta-small {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            border: 1px solid var(--card-bg);
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-small:hover {
+            border-color: var(--accent);
+            color: var(--text-main);
+        }
+
+        /* HERO SECTION */
         .hero {
-            height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 0 10%;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 70%);
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Efecto de luz de fondo */
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: var(--accent);
+            filter: blur(150px);
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(227, 28, 62, 0.1);
+            color: var(--accent);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid var(--accent-glow);
         }
 
         h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
+            font-size: 4rem;
+            line-height: 1.1;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         h2 {
-            font-size: 1.5rem;
-            color: #888;
-            font-weight: normal;
-            margin-bottom: 40px;
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto 40px;
         }
 
-        .btn {
+        .btn-primary {
             display: inline-block;
-            padding: 15px 30px;
-            background-color: var(--accent-color);
+            background-color: var(--accent);
             color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
             text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px var(--accent-glow);
+        }
+
+        /* TECH STACK */
+        .tech-stack {
+            margin-top: 60px;
+            padding: 20px;
+            border-top: 1px solid var(--card-bg);
+            border-bottom: 1px solid var(--card-bg);
+        }
+        
+        .tech-stack p {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .tech-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
             font-weight: bold;
-            border-radius: 5px;
-            transition: transform 0.2s;
-            border: none;
-            cursor: pointer;
-            font-family: inherit;
+            color: #fff;
+            opacity: 0.7;
         }
 
-        .btn:hover {
-            transform: scale(1.05);
-            background-color: #ef233c;
-        }
-
+        /* FEATURES GRID */
         .features {
-            padding: 80px 10%;
-            background-color: var(--secondary-color);
+            padding: 100px 0;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
-        .feature-card {
-            padding: 30px;
-            border: 1px solid #333;
-            border-radius: 10px;
+        .card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
-        .feature-card h3 { color: var(--accent-color); }
-
-        .about {
-            padding: 80px 10%;
-            text-align: center;
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
         }
 
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .card p {
+            color: var(--text-muted);
+        }
+
+        .number {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* FOOTER */
         footer {
             text-align: center;
-            padding: 20px;
-            border-top: 1px solid #333;
-            font-size: 0.8rem;
-            color: #666;
+            padding: 40px 0;
+            border-top: 1px solid var(--card-bg);
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
-        /* Matrix effect details */
-        .highlight { color: var(--accent-color); }
-        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .hero { padding: 60px 0; }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">NM <span>DATA</span></div>
-        <div>
-            <a href="mailto:Nicolas24martinez@gmail.com" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">Contact</a>
-        </div>
-    </header>
+    <div class="container">
+        <header>
+            <div class="logo">NM<span>_DATA</span></div>
+            <a href="mailto:Nicolas24martinez@gmail.com" class="cta-small">Contact Me</a>
+        </header>
 
-    <section class="hero">
-        <p style="color: var(--accent-color);">PYTHON-BASED LEAD GENERATION</p>
-        <h1>Stop searching.<br>Start selling.</h1>
-        <h2>I engineer custom scraping solutions to deliver <br>verified B2B leads directly to your CRM.</h2>
-        <div>
-            <a href="mailto:Nicolas24martinez@gmail.com" class="btn">Get 50 Free Leads</a>
-        </div>
-    </section>
+        <section class="hero">
+            <span class="badge">SYSTEMS ENGINEERING & DATA MINING</span>
+            <h1>Precision Data.<br>Zero Fluff.</h1>
+            <h2>I write custom Python scripts to extract verified B2B leads for agencies that need to scale fast.</h2>
+            <a href="mailto:Nicolas24martinez@gmail.com" class="btn-primary">Get 50 Free Leads</a>
 
-    <section class="features">
-        <div class="feature-card">
-            <h3>01. Fresh Data</h3>
-            <p>No outdated databases. I scrape public sources in real-time to ensure every contact is active and relevant.</p>
-        </div>
-        <div class="feature-card">
-            <h3>02. Engineer Logic</h3>
-            <p>Developed by a Systems Engineering student. My proprietary scripts filter noise and deliver high-precision targets.</p>
-        </div>
-        <div class="feature-card">
-            <h3>03. Verified Emails</h3>
-            <p>Every lead goes through a rigorous verification process. Zero bounce rate is the goal.</p>
-        </div>
-    </section>
+            <div class="tech-stack">
+                <p>POWERED BY</p>
+                <div class="tech-icons">
+                    <span>PYTHON</span>
+                    <span>SELENIUM</span>
+                    <span>PANDAS</span>
+                    <span>APOLLO API</span>
+                </div>
+            </div>
+        </section>
 
-    <section class="about">
-        <h3>About Me</h3>
-        <p style="max-width: 600px; margin: 0 auto;">
-            I'm <strong>Nico</strong>, a Systems Engineering student based in Argentina. 
-            I combine technical expertise in <strong>Python & Data Mining</strong> with a business-first approach. 
-            My goal is to automate your lead generation so you can focus on closing deals.
-        </p>
-    </section>
+        <div class="features">
+            <div class="card">
+                <span class="number">01_</span>
+                <h3>Custom Scraping</h3>
+                <p>I don't sell recycled lists. I build bots that scrape specific targets based on your exact niche and location requirements.</p>
+            </div>
+            <div class="card">
+                <span class="number">02_</span>
+                <h3>Data Verification</h3>
+                <p>Every email is pinged and verified. I clean the data using Pandas to ensure you only pay for valid contacts.</p>
+            </div>
+            <div class="card">
+                <span class="number">03_</span>
+                <h3>Engineer Approach</h3>
+                <p>As an Engineering student, I focus on logic and efficiency. No manual copy-pasting, just pure automated precision.</p>
+            </div>
+        </div>
 
-    <footer>
-        <p>&copy; 2025 NM Data Solutions. Built with code, not builders.</p>
-    </footer>
+        <footer>
+            <p>&copy; 2025 NM Data Solutions. Mendoza, Argentina.</p>
+            <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.5;">Developed by Rivernic</p>
+        </footer>
+    </div>
 
 </body>
 </html>
