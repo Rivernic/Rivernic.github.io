@@ -14,11 +14,12 @@
     <style>
         :root {
             --bg-color: #050505;
-            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-bg: rgba(255, 255, 255, 0.03);
             --text-main: #ffffff;
             --text-muted: #a1a1aa;
             --accent: #e31c3e; 
             --accent-glow: rgba(227, 28, 62, 0.3);
+            --border: rgba(255, 255, 255, 0.1);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,10 +35,10 @@
         body::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-image: linear-gradient(var(--card-bg) 1px, transparent 1px), linear-gradient(90deg, var(--card-bg) 1px, transparent 1px);
-            background-size: 50px 50px; z-index: -1; opacity: 0.5;
+            background-size: 40px 40px; z-index: -1; opacity: 0.3;
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
         header {
             padding: 20px 0; display: flex; justify-content: space-between; align-items: center;
@@ -48,94 +49,102 @@
         .logo span { color: var(--accent); }
         
         .cta-small {
-            font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--text-muted);
-            text-decoration: none; border: 1px solid var(--card-bg); padding: 8px 16px; border-radius: 4px; transition: all 0.3s ease;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-muted);
+            text-decoration: none; border: 1px solid var(--border); padding: 8px 16px; border-radius: 4px; transition: all 0.3s ease;
         }
         .cta-small:hover { border-color: var(--accent); color: var(--text-main); }
 
-        .hero { padding: 100px 0 80px; text-align: center; position: relative; }
-        
+        /* HERO */
+        .hero { padding: 80px 0 60px; text-align: center; position: relative; }
         .hero::after {
-            content: ""; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 300px; height: 300px; background: var(--accent); filter: blur(150px); opacity: 0.2; z-index: -1;
+            content: ""; position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%);
+            width: 400px; height: 400px; background: var(--accent); filter: blur(180px); opacity: 0.15; z-index: -1;
         }
 
         .badge {
-            display: inline-block; background: rgba(227, 28, 62, 0.1); color: var(--accent);
-            padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;
-            margin-bottom: 20px; border: 1px solid var(--accent-glow);
+            display: inline-block; background: rgba(227, 28, 62, 0.08); color: var(--accent);
+            padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px;
+            margin-bottom: 25px; border: 1px solid rgba(227, 28, 62, 0.2);
         }
 
         h1 {
-            font-size: 4rem; line-height: 1.1; font-weight: 700; margin-bottom: 20px;
-            background: linear-gradient(to right, #fff, #a1a1aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-size: 3.5rem; line-height: 1.1; font-weight: 700; margin-bottom: 20px; letter-spacing: -1px;
+            background: linear-gradient(to bottom, #fff, #a1a1aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        h2 { font-size: 1.25rem; color: var(--text-muted); font-weight: 300; max-width: 600px; margin: 0 auto 40px; }
+        h2 { font-size: 1.2rem; color: var(--text-muted); font-weight: 300; max-width: 600px; margin: 0 auto 40px; }
 
         .btn-primary {
             display: inline-block; background-color: var(--accent); color: white;
-            padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 600;
-            font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 0 20px var(--accent-glow);
+            padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: 600;
+            font-size: 1rem; transition: all 0.3s ease; box-shadow: 0 0 25px rgba(227, 28, 62, 0.4);
         }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 30px var(--accent-glow); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(227, 28, 62, 0.6); }
 
-        .email-display {
-            margin-top: 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--text-muted);
+        .email-display { margin-top: 25px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--text-muted); }
+        .email-display span { color: #fff; border-bottom: 1px dashed var(--accent); cursor: pointer; }
+
+        /* DATA PREVIEW (NUEVO) */
+        .data-preview {
+            margin: 60px auto 0;
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 900px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
         }
-        .email-display span { color: #fff; border-bottom: 1px dotted var(--accent); }
-
-        .tech-stack { margin-top: 60px; padding: 20px; border-top: 1px solid var(--card-bg); border-bottom: 1px solid var(--card-bg); }
-        .tech-stack p { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 15px; }
-        .tech-icons { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; font-weight: bold; color: #fff; opacity: 0.7; }
-        .tech-icons span:hover { color: var(--accent); cursor: default; transition: color 0.3s; }
-
-        .features { padding: 100px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .data-preview-header {
+            display: flex; gap: 8px; margin-bottom: 15px;
+        }
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); }
+        .dot.red { background: #ff5f56; } .dot.yellow { background: #ffbd2e; } .dot.green { background: #27c93f; }
         
+        .data-table {
+            width: 100%; border-collapse: collapse; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; text-align: left;
+        }
+        .data-table th { color: var(--text-muted); padding: 10px; border-bottom: 1px solid var(--border); font-weight: normal; }
+        .data-table td { color: var(--text-main); padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        .data-table tr:last-child td { border-bottom: none; }
+        .blur-text { filter: blur(4px); opacity: 0.5; user-select: none; }
+        .tag { padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; }
+        .tag.verified { background: rgba(39, 201, 63, 0.1); color: #27c93f; border: 1px solid rgba(39, 201, 63, 0.2); }
+
+        /* TECH STACK */
+        .tech-stack {
+            margin-top: 80px; padding: 30px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+        .tech-label { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent); margin-bottom: 20px; display: block; letter-spacing: 2px; }
+        .tech-icons { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; font-weight: 700; color: var(--text-muted); font-size: 1.1rem; }
+        .tech-icons span { display: flex; align-items: center; gap: 8px; }
+        .code-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
+
+        /* FEATURES */
+        .features { padding: 100px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .card {
-            background: var(--card-bg); padding: 40px; border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.05); transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-        .card:hover { transform: translateY(-5px); border-color: var(--accent); }
-        .card h3 { font-size: 1.5rem; margin-bottom: 15px; font-family: 'Outfit', sans-serif; }
-        .card p { color: var(--text-muted); }
-        .number { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.9rem; margin-bottom: 10px; display: block; }
-
-        footer {
-            text-align: center; padding: 40px 0; border-top: 1px solid var(--card-bg);
-            color: var(--text-muted); font-size: 0.9rem;
-        }
-        
-        .social-links {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .social-icon {
-            color: var(--text-muted);
+            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            padding: 35px; border-radius: 12px; border: 1px solid var(--border);
             transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
         }
-        
-        .social-icon svg {
-            width: 20px;
-            height: 20px;
-            margin-right: 8px;
-            fill: currentColor;
-        }
+        .card:hover { transform: translateY(-5px); border-color: var(--accent); background: rgba(255,255,255,0.04); }
+        .card h3 { font-size: 1.3rem; margin-bottom: 10px; font-family: 'Outfit', sans-serif; color: #fff; }
+        .card p { color: var(--text-muted); font-size: 0.95rem; }
+        .number { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.8rem; margin-bottom: 15px; display: block; }
 
-        .social-icon:hover {
-            color: var(--accent);
-        }
+        /* FOOTER */
+        footer { text-align: center; padding: 60px 0; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem; }
+        .social-links { margin-top: 25px; display: flex; justify-content: center; gap: 20px; align-items: center; }
+        .social-icon { color: var(--text-muted); transition: all 0.3s ease; display: flex; align-items: center; text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
+        .social-icon svg { width: 18px; height: 18px; margin-right: 8px; fill: currentColor; }
+        .social-icon:hover { color: var(--accent); }
 
-        @media (max-width: 768px) { h1 { font-size: 2.5rem; } .hero { padding: 60px 0; } }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .data-preview { overflow-x: scroll; }
+        }
     </style>
 </head>
 <body>
@@ -143,63 +152,104 @@
     <div class="container">
         <header>
             <div class="logo">NM<span>_DATA</span></div>
-            <a href="mailto:Nicolas24martinez@gmail.com" class="cta-small">Contact Me</a>
+            <a href="mailto:Nicolas24martinez@gmail.com" class="cta-small">Start Project</a>
         </header>
 
         <section class="hero">
-            <span class="badge">SYSTEMS ENGINEERING & DATA MINING</span>
-            <h1>Precision Data.<br>Zero Fluff.</h1>
-            <h2>I write custom Python scripts to extract verified B2B leads for agencies that need to scale fast.</h2>
+            <span class="badge">CUSTOM PYTHON SCRAPING</span>
+            <h1>Precision Data.<br>Human Verified.</h1>
+            <h2>I engineer custom scripts to extract verified B2B leads for agencies. No recycled databases. Just fresh, actionable data.</h2>
             
-            <a href="mailto:Nicolas24martinez@gmail.com" class="btn-primary">Get 50 Free Leads</a>
+            <a href="mailto:Nicolas24martinez@gmail.com" class="btn-primary">Request 50 Free Leads</a>
             
             <div class="email-display">
-                Or email me directly:<br>
-                <span>Nicolas24martinez@gmail.com</span>
+                or email: <span>Nicolas24martinez@gmail.com</span>
             </div>
 
-            <div class="tech-stack">
-                <p>POWERED BY</p>
-                <div class="tech-icons">
-                    <span>PYTHON</span>
-                    <span>SELENIUM</span>
-                    <span>PANDAS</span>
-                    <span>APOLLO API</span>
+            <div class="data-preview">
+                <div class="data-preview-header">
+                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: #666; margin-left: 10px;">output_sample.csv</span>
                 </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>COMPANY</th>
+                            <th>ROLE</th>
+                            <th>EMAIL STATUS</th>
+                            <th>LOCATION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TechFlow Agency</td>
+                            <td>Founder & CEO</td>
+                            <td><span class="tag verified">VERIFIED</span></td>
+                            <td>Miami, FL</td>
+                        </tr>
+                        <tr>
+                            <td>Growth Partners</td>
+                            <td>Director of Sales</td>
+                            <td><span class="tag verified">VERIFIED</span></td>
+                            <td>London, UK</td>
+                        </tr>
+                        <tr>
+                            <td>Apex Digital</td>
+                            <td>Marketing Lead</td>
+                            <td><span class="tag verified">VERIFIED</span></td>
+                            <td>Austin, TX</td>
+                        </tr>
+                        <tr>
+                            <td class="blur-text">Hidden Corp</td>
+                            <td class="blur-text">Owner</td>
+                            <td><span class="tag verified">VERIFIED</span></td>
+                            <td class="blur-text">New York</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 
+        <div class="tech-stack">
+            <span class="tech-label">ENGINEERED WITH</span>
+            <div class="tech-icons">
+                <span><div class="code-dot"></div>PYTHON</span>
+                <span><div class="code-dot"></div>SELENIUM</span>
+                <span><div class="code-dot"></div>PANDAS</span>
+                <span><div class="code-dot"></div>APOLLO API</span>
+            </div>
+        </div>
+
         <div class="features">
             <div class="card">
-                <span class="number">01_</span>
-                <h3>Custom Scraping</h3>
-                <p>I don't sell recycled lists. I build bots that scrape specific targets based on your exact niche and location requirements.</p>
+                <span class="number">01 // TARGET</span>
+                <h3>Laser Focused</h3>
+                <p>You define the Niche and Location (e.g., "Dentists in London"). I calibrate the script to find exactly that.</p>
             </div>
             <div class="card">
-                <span class="number">02_</span>
-                <h3>Data Verification</h3>
-                <p>Every email is pinged and verified. I clean the data using Pandas to ensure you only pay for valid contacts.</p>
+                <span class="number">02 // EXTRACT</span>
+                <h3>Fresh Mining</h3>
+                <p>I don't have a "database". I go out and find the data new every time to ensure it's current and active.</p>
             </div>
             <div class="card">
-                <span class="number">03_</span>
-                <h3>Engineer Approach</h3>
-                <p>As an Engineering student, I focus on logic and efficiency. No manual copy-pasting, just pure automated precision.</p>
+                <span class="number">03 // VERIFY</span>
+                <h3>Student Honesty</h3>
+                <p>As an Engineering student, I value reputation over quick bucks. I manually spot-check the data before delivery.</p>
             </div>
         </div>
 
         <footer>
-            <p>&copy; 2025 NM Data Solutions. Mendoza, Argentina.</p>
-            <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.5;">Contact: Nicolas24martinez@gmail.com</p>
+            <p>&copy; 2025 NM Data Solutions.</p>
+            <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.5;">Built in Mendoza, Argentina.</p>
             
             <div class="social-links">
-                <a href="https://instagram.com/Nico.martinez24" target="_blank" class="social-icon">
+                <a href="https://instagram.com/nico.martinez24" target="_blank" class="social-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.07 4.85c-.148 3.252-1.667 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.667-4.919-4.919-.058-1.265-.07-1.645-.07-4.85s.012-3.584.07-4.85c.148-3.252 1.667-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    <span>@Rivernic</span> </a>
+                    <span>@nico.martinez24</span>
+                </a>
             </div>
         </footer>
     </div>
 
-</body>
-</html>
 </body>
 </html>
