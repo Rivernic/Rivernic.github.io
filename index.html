@@ -61,32 +61,6 @@
 
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-        /* --- ESTILOS CRÍTICOS (ABOUT & PROFILE) --- */
-        .about-section {
-            margin: 80px auto; 
-            max-width: 900px; 
-            display: flex; 
-            align-items: center; 
-            gap: 50px;
-            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
-            border: 1px solid var(--border); 
-            padding: 40px; 
-            border-radius: 20px;
-        }
-        /* ACA ESTABA EL PROBLEMA, AHORA ESTA FORZADO */
-        .profile-img { 
-            width: 180px !important; 
-            height: 180px !important; 
-            border-radius: 50%; 
-            object-fit: cover; 
-            border: 3px solid var(--accent); 
-            box-shadow: 0 0 30px rgba(227, 28, 62, 0.2); 
-            flex-shrink: 0; /* Evita que se aplaste */
-        }
-        .about-text h3 { font-size: 1.8rem; margin-bottom: 15px; }
-        .about-text p { color: var(--text-muted); margin-bottom: 15px; font-size: 1rem; }
-        .signature { font-family: 'JetBrains Mono', monospace; color: var(--accent); margin-top: 10px; display: block; font-size: 0.9rem; }
-
         /* HEADER */
         header {
             padding: 20px 0; display: flex; justify-content: space-between; align-items: center;
@@ -131,7 +105,7 @@
         }
         .btn-secondary:hover { border-color: var(--text-main); background: rgba(255,255,255,0.05); }
 
-        /* TRUSTED BY & LOGOS */
+        /* TRUSTED BY */
         .trusted-by {
             margin-bottom: 60px; padding: 20px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
             background: rgba(255,255,255,0.01);
@@ -216,6 +190,25 @@
             background: rgba(227, 28, 62, 0.1); padding: 4px 8px; border-radius: 4px; border: 1px solid rgba(227, 28, 62, 0.2);
         }
         .faq-answer { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-left: 0; }
+
+        /* ABOUT SECTION & PROFILE - ARREGLADO (VUELTA A LA CALIDAD HD) */
+        .about-section {
+            margin: 80px auto; max-width: 900px; display: flex; align-items: center; gap: 50px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            border: 1px solid var(--border); padding: 40px; border-radius: 20px;
+        }
+        .profile-img { 
+            width: 180px; 
+            height: 180px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 3px solid var(--accent); 
+            box-shadow: 0 0 30px rgba(227, 28, 62, 0.2);
+            flex-shrink: 0; /* ESTO EVITA QUE SE APLASTE SIN PERDER CALIDAD */
+        }
+        .about-text h3 { font-size: 1.8rem; margin-bottom: 15px; }
+        .about-text p { color: var(--text-muted); margin-bottom: 15px; font-size: 1rem; }
+        .signature { font-family: 'JetBrains Mono', monospace; color: var(--accent); margin-top: 10px; display: block; font-size: 0.9rem; }
 
         /* FOOTER */
         footer { text-align: center; padding: 60px 0; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem; }
